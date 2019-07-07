@@ -23,18 +23,12 @@ class Edit extends React.Component {
   };
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
-    // if (id === "new") {return};
     this.setState({ isFetching: true, error: null});
     fetchOrderById(id)
-      .then(data => {
-          console.log(data);         
+      .then(data => {      
         this.setState({order: data});
-          console.log(this.state.order);
-        // console.log(this.state.order.status) 
       }).then(res => {       
-        const order=this.state.order;   
-        console.log(order);
+        const order=this.state.order;
         this.props.form.setFieldsValue(
             { status:`${order.status}`,
               comments:`${order.comments}`,

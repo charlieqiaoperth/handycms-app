@@ -13,22 +13,22 @@ import {loggedIn} from "../api/auth";
 
 
 export default () => (
-    <div> 
-      {/* login interface */}
-      {/* {
-     !loggedIn() &&
-     <Route exact path="/login" component={LoginView} />
-      }    */}
+    <div>
+      
+      {
+     !loggedIn() &&   
+     <Route exact path="/" component={LoginView} />  
+    //  <loginRoute exact path="/login" component={LoginView} />
+      }   
        {
-    //  loggedIn() &&
+     loggedIn() &&
      <BasicLayout>
      <ProtectedRoute exact path="/" component={Home} />
      <ProtectedRoute exact path="/orders/management" component={OrderManagement} /> 
      <ProtectedRoute exact path="/orders/management/edit/:id" component={OrderEdit} />  
      <ProtectedRoute exact path="/orders/management/:id" component={OrderView} />     
      <ProtectedRoute exact path="/admin/setting" component={setting} />
-     <Route exact path="/admin/login" component={LoginView} /> 
-     <Redirect path="/" />    
+     <Route exact path="/admin/login" component={LoginView} />      
      </BasicLayout>
        }
      </div>
@@ -46,7 +46,7 @@ const ProtectedRoute = ({ component: ProtectedComponent, ...rest }) => {
       ) : (
         <Redirect
           to={{
-            pathname: '/admin/login',
+            pathname: '/login',
             state: { from: props.location },
           }}
         />

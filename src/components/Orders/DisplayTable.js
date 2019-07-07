@@ -6,9 +6,9 @@ import { Table, Divider } from 'antd';
 
 
 export default class displayTable extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     columns = [
         {
           title: 'ID',

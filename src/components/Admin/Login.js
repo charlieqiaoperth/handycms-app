@@ -2,6 +2,7 @@
 import { Form, Icon, Input, Button, Modal ,Row, Col} from 'antd';
 import React, { Component } from 'react';
 import UserLayout from '../Ui/user';
+import {withRouter} from "react-router-dom";
 import { login, creatNewUser } from '../../api/auth';
 
 class NormalLoginForm extends React.Component {
@@ -65,16 +66,18 @@ class NormalLoginForm extends React.Component {
       visible={this.state.visible}
       onCancel={this.handleCancel}
       onCreate={this.handleCreate}/>
-    <Row >
+      
+    <Row >  
         <Col span={8} offset={8}>
       <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form.Item>JR Handyman-CMS DEMO</Form.Item>
         <Form.Item>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
+              placeholder="Username: guest"
             />,
           )}
         </Form.Item>
@@ -85,13 +88,12 @@ class NormalLoginForm extends React.Component {
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="Password"
+              placeholder="Password: guest"
             />,
           )}
-        </Form.Item>
-        
+        </Form.Item>     
         <Form.Item>
-         <Row gutter={6} span={24} justify={"space-around"}>
+        <Row gutter={6} span={24} justify={"space-around"}>
             <Col span={24}>
           <Button type="primary" htmlType="submit" block>
             Log in
@@ -106,7 +108,7 @@ class NormalLoginForm extends React.Component {
           Or <a href='#' onClick={this.showModal} ><span>register now!</span>
           </a>
           </Col>
-          </Row>        
+        </Row>        
         </Form.Item>
         
       </Form>
@@ -152,5 +154,5 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   },
 );
 
-export default LoginForm;
+export default withRouter(LoginForm);
           

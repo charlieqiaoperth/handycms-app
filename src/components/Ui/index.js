@@ -2,14 +2,11 @@ import { Component } from 'react';
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
-
-
-
-
+import Logout from '../Admin/Logout';
 const { Header, Footer, Sider, Content } = Layout;
 
 // 引入子菜单组件
-const SubMenu = Menu.SubMenu; 
+// const SubMenu = Menu.SubMenu; 
 
 export default class BasicLayout extends Component {
   // state = {
@@ -48,13 +45,13 @@ export default class BasicLayout extends Component {
             <Menu.Item key="3"><Link to="/businesses/management">Businesses</Link></Menu.Item>
             <Menu.Item key="4"><Link to="/orders/management">Orders</Link></Menu.Item>
             <Menu.Item key="5"><Link to="/categories/management">Categories</Link></Menu.Item>
-            <SubMenu
+            {/* <SubMenu
               key="sub5"
               title={<span><Icon type="dashboard" /><span>Admin User</span></span>}
             >
                <Menu.Item key="6"><Link to="/admin/login">Login</Link></Menu.Item>
                <Menu.Item key="7"><Link to="/admin/setting">Setting</Link></Menu.Item>   
-            </SubMenu>   
+            </SubMenu>    */}
           </Menu>
         </Sider>
         <Layout >
@@ -65,7 +62,7 @@ export default class BasicLayout extends Component {
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             /> */}
-            <h2>Welcome to JR Handyman CMS</h2>
+            <Logout />
             </div>
             </Header>
           <Content style={{ margin: '24px 16px 0' }}>
