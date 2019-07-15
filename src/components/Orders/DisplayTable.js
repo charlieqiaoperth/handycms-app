@@ -71,7 +71,7 @@ export default class displayTable extends React.Component {
     render() {
       return (
    
-        <div><Table columns={this.columns} dataSource={this.props.orders} />,
+        <div><Table columns={this.columns} dataSource={this.props.orders} rowKey="_id" />,
        </div>
        
       );

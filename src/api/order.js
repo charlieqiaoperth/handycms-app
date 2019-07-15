@@ -4,7 +4,8 @@ export function fetchOrders(fieldValue) {
   return axios
     .get('/orders?pageSize=10', {})
     .then(response => { 
-        const orders= response;    
+        const orders= response.data; 
+        console.log(orders);
         return orders;
         })}
         else {
@@ -12,7 +13,7 @@ export function fetchOrders(fieldValue) {
           return axios
             .get('/orders', {params:{page, pageSize, key, sort, searchType}})
                 .then(response => { 
-                const orders= response;
+                const orders= response.data;
                 return orders;
               })
         }
