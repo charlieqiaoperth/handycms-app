@@ -16,13 +16,14 @@ class NormalLoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({ isFetching: true});
     this.props.form.validateFields((err, values) => {
       if (!err) {        
         login(values).then(auth => {
           this.setState({ isFetching: false });
           this.props.history.push('/orders/management');
         });
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
       }
     });
   };
@@ -38,17 +39,20 @@ class NormalLoginForm extends React.Component {
   handleCreate = () => {
     const { form } = this.formRef.props;
     form.validateFields((err, values) => {
+      this.setState({ isFetching: true});
       if (!err) {
         creatNewUser(values).then(newUser => {
           this.setState({ visible: false });
           // console.log(newUser);
+          this.setState({ isFetching: false});
         }).catch(err=>{
           console.log(err.response.data);
+          this.setState({ isFetching: false});
           alert(err.response.data);
         })
       }
 
-      console.log('Received values of form: ', values);
+      // console.log('Received values of form: ', values);
       form.resetFields();
       // this.setState({ visible: true });
     });
@@ -95,7 +99,7 @@ class NormalLoginForm extends React.Component {
         <Form.Item>
         <Row gutter={6} span={24} justify={"space-around"}>
             <Col span={24}>
-          <Button type="primary" htmlType="submit" block>
+          <Button type="primary" htmlType="submit" block loading={this.state.isFetching}>
             Log in
           </Button>
           </Col>
